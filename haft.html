@@ -12,7 +12,8 @@
             background: #121212;
             color: #f0f0f0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             padding: 20px;
             min-height: 100vh;
             margin: 0;
@@ -34,8 +35,7 @@
             border-radius: 15px;
             padding: 1.5rem;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-            position: relative;
-            overflow: hidden;
+            margin-bottom: 1rem;
         }
 
         .rule {
@@ -53,85 +53,84 @@
             box-shadow: 0 4px 20px rgba(255, 100, 100, 0.5);
         }
 
-        /* Regenbogen-Rand und animiertes Overlay nur beim Hover */
-        .rule::before {
-            content: '';
-            position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
+        /* Zurück zur Startseite Container */
+        .back-container {
+            width: 90%;
+            max-width: 800px;
+            background: #333;
+            padding: 1rem;
+            margin-top: 20px;
             border-radius: 10px;
-            background: linear-gradient(45deg, #ff0066, #ffcc00, #33cc33, #00ccff, #ff33cc);
-            background-size: 300% 300%;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
         }
 
-        .rule:hover::before {
-            opacity: 1;
-            animation: rainbowBorderMove 1.5s linear infinite;
-        }
-
-        /* Leichter Glow über der Regel beim Hover */
-        .rule::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            border-radius: 10px 10px 0 0;
-            background: linear-gradient(90deg, transparent, #FFD700, transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .rule:hover::after {
-            opacity: 1;
-            animation: glow 1.5s linear infinite;
-        }
-
-        .rule h2 {
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .rule h2 .rule-icon {
-            margin-right: 0.5rem;
-            font-size: 1.8rem;
+        .back-container a {
             color: #FFD700;
-            transition: transform 0.3s ease;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
 
-        .rule:hover h2 .rule-icon {
-            transform: scale(1.1);
+        .back-container a:hover {
+            color: #ffcc00;
         }
 
-        .rule p {
-            font-size: 1rem;
-            line-height: 1.6;
-            margin: 0.5rem 0;
+        /* Media Queries */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .rules-container,
+            .back-container {
+                padding: 1rem;
+            }
+
+            .rule {
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .rule h2 {
+                font-size: 1.3rem;
+            }
+
+            .rule h2 .rule-icon {
+                font-size: 1.5rem;
+            }
+
+            .rule p {
+                font-size: 0.9rem;
+            }
         }
 
-        /* Animationen */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
 
-        @keyframes glow {
-            0% { opacity: 0.8; }
-            50% { opacity: 1; }
-            100% { opacity: 0.8; }
-        }
+            .rules-container,
+            .back-container {
+                width: 100%;
+                padding: 0.8rem;
+            }
 
-        /* Animiert den Regenbogen-Effekt kontinuierlich beim Hover */
-        @keyframes rainbowBorderMove {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
+            .rule {
+                padding: 0.8rem;
+            }
+
+            .rule h2 {
+                font-size: 1.2rem;
+            }
+
+            .rule h2 .rule-icon {
+                font-size: 1.4rem;
+            }
+
+            .rule p {
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
@@ -152,7 +151,7 @@
 
         <div class="rule">
             <h2><span class="rule-icon">📊</span>Datenschutz und Verarbeitung personenbezogener Daten</h2>
-            <p>Verantwortlicher für die Verarbeitung personenbezogener Daten im Sinne der Datenschutz-Grundverordnung (DSGVO) ist Eministar, erreichbar unter <a href="mailto:info@eministar.de" style="color: #FFD700;">info@eministar.de</a>.</p>
+            <p>Verantwortlicher für die Verarbeitung personenbezogener Daten im Sinne der Datenschutz-Grundverordnung (DSGVO) ist Eministar, erreichbar unter <a href="mailto:info@eministar.de" style="color: #FFD700;">eministarvr@gmx.de</a>.</p>
         </div>
 
         <div class="rule">
@@ -169,6 +168,10 @@
             <h2><span class="rule-icon">📩</span>Wichtiger Hinweis</h2>
             <p>Dieser Text ist ein anwaltlich geprüfter Text. Mit dem Senden einer Nachricht auf diesem Server wird automatisch zugestimmt.</p>
         </div>
+    </div>
+
+    <div class="back-container">
+        <p>Kehre zurück zur <a href="https://www.eministar.de" target="_blank">Main Homepage: www.eministar.de</a></p>
     </div>
 </body>
 </html>
